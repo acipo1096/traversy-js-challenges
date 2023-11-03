@@ -1,4 +1,4 @@
-const HashTable = require('./HashTable');
+const HashTable = require("./HashTable");
 
 function wordInstanceCounter(str, word) {
   // Convert the input string to lowercase and split it into an array of words
@@ -16,7 +16,7 @@ function wordInstanceCounter(str, word) {
   // Loop through each word in the array of words
   for (const currentWord of words) {
     // Ignore empty strings (caused by multiple spaces or punctuation marks)
-    if (currentWord === '') continue;
+    if (currentWord === "") continue;
 
     // Check if the current word already exists in the HashTable
     if (wordFrequency.has(currentWord)) {

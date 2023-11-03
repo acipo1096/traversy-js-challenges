@@ -20,16 +20,16 @@ function wordInstanceCounter(str: string, word: string): number
 
 ```js
 console.log(
-  wordInstanceCounter('The quick brown fox jumps over the lazy dog.', 'the')
+  wordInstanceCounter("The quick brown fox jumps over the lazy dog.", "the")
 ); // Output: 2
 console.log(
   wordInstanceCounter(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    'ipsum'
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "ipsum"
   )
 ); // Output: 1
-console.log(wordInstanceCounter('Hello, world!', 'hello')); // Output: 1
-console.log(wordInstanceCounter('Hello, Hello, Hello!', 'hello')); // Output: 3
+console.log(wordInstanceCounter("Hello, world!", "hello")); // Output: 1
+console.log(wordInstanceCounter("Hello, Hello, Hello!", "hello")); // Output: 3
 ```
 
 ### Constraints
@@ -53,7 +53,7 @@ function wordInstanceCounter(str, word) {
   let count = 0;
 
   for (const currentWord of words) {
-    if (currentWord === '') continue;
+    if (currentWord === "") continue;
 
     if (wordFrequency.has(currentWord)) {
       wordFrequency.set(currentWord, wordFrequency.get(currentWord) + 1);
@@ -75,17 +75,17 @@ function wordInstanceCounter(str, word) {
 ### Test Cases
 
 ```js
-test('Counting instances of a word in a string', () => {
+test("Counting instances of a word in a string", () => {
   expect(
-    wordInstanceCounter('The quick brown fox jumps over the lazy dog.', 'the')
+    wordInstanceCounter("The quick brown fox jumps over the lazy dog.", "the")
   ).toBe(2);
   expect(
     wordInstanceCounter(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'ipsum'
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "ipsum"
     )
   ).toBe(1);
-  expect(wordInstanceCounter('Hello, world!', 'hello')).toBe(1);
-  expect(wordInstanceCounter('Hello, Hello, Hello!', 'hello')).toBe(3);
+  expect(wordInstanceCounter("Hello, world!", "hello")).toBe(1);
+  expect(wordInstanceCounter("Hello, Hello, Hello!", "hello")).toBe(3);
 });
 ```
