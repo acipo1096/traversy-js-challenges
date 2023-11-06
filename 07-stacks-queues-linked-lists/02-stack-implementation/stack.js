@@ -6,7 +6,7 @@ class Stack {
   }
 
   push(value) {
-    if (this.isFull) {
+    if (this.isFull()) {
       return false;
     }
 
