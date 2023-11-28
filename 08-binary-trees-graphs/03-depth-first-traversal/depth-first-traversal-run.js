@@ -18,3 +18,6 @@ root.right = nodeC;
 nodeB.left = nodeD;
 nodeB.right = nodeE;
 nodeC.left = nodeF;
+
+const result = depthFirstTraversal(root);
+console.log(result);
