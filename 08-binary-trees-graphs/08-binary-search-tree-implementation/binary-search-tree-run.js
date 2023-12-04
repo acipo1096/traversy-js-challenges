@@ -23,5 +23,5 @@ bst.printTree();
 // When you test, should be, vertically, 2,5,10,15
 
 // Video 2
-// console.log(bst.lookup(15));
-// console.log(bst.lookup(10));
+console.log(bst.lookup(15));
+console.log(bst.lookup(10));
