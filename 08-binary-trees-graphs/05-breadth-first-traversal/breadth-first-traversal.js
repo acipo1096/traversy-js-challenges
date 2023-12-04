@@ -12,20 +12,26 @@ function breadthFirstTraversal(root) {
   if (!root) return [];
 
   const result = [];
-  const queue = [];
+  // const queue = [];
+  const queue = new Queue();
 
-  queue.push(root);
+  // queue.push(root);
+  queue.enqueue(root);
 
-  while (queue.length > 0) {
-    const current = queue.shift();
+  // while (queue.length > 0) {
+    while (!queue.isEmpty()) {
+    // const current = queue.shift();
+    const current = queue.dequeue();
     result.push(current.data);
     
     if (current.left) {
-      queue.push(current.left);
+      // queue.push(current.left);
+      queue.enqueue(current.left);
     }
 
     if (current.right) {
-      queue.push(current.right);
+      // queue.push(current.right);
+      queue.enqueue(current.right);
     }
   }
 
