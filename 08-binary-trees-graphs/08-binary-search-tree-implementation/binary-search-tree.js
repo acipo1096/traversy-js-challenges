@@ -1,102 +1,100 @@
 class Node {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
 }
 
 class BinarySearchTree {
-    constructor() {
-        this.root = null;
+  constructor() {
+    this.root = null;
+  }
+
+  insert(value) {
+    const newNode = new Node(value);
+
+    if (this.root === null) {
+      this.root = newNode;
+    } else {
+      let currentNode = this.root;
+
+      while (true) {
+        if (value < currentNode.value) {
+          if (!currentNode.left) {
+            currentNode.left === newNode;
+            return this;
+          }
+          currentNode = currentNode.left;
+        } else {
+          if (!currentNode.right) {
+            currentNode.right = newNode;
+            return this;
+          }
+          currentNode = currentNode.right;
+        }
+      }
     }
+  }
 
-    insert(value) {
-        const newNode = new Node(value);
+  lookup(value) {
+    let currentNode = this.root;
 
-        if (this.root === null) {
-            this.root = newNode;
-        }
+    if (!currentNode) return null;
 
-        else {
-            let currentNode = this.root;
-
-            while (true) {
-                if (value < currentNode.value) {
-                    if(!currentNode.left) {
-                        currentNode.left === newNode;
-                        return this;
-                    }
-                    currentNode = currentNode.left;
-                } else {
-                    if (!currentNode.right) {
-                        currentNode.right = newNode;
-                        return this;
-                    }
-                    currentNode = currentNode.right;
-                }
-            }
-        }
+    while (currentNode) {
+      if (value < currentNode.value) {
+        currentNode = currentNode.left;
+      } else if (value > currentNode.value) {
+        currentNode = currentNode.right;
+      } else if (value === currentNode.value) {
+        return currentNode;
+      }
     }
-    
-    lookup(value) {
-        let currentNode = this.root;
+    return null;
+  }
 
-        if (!currentNode) return null;
+  remove(value) {
+    const removeNode = (node, value) => {
+      if (node === null) return null;
 
-        while (currentNode) {
-            if (value < currentNode.value) {
-                currentNode = currentNode.left;
-            } else if (value > currentNode.value) {
-                currentNode = currentNode.right;
-            } else if (value === currentNode.value) {
-                return currentNode;
-            }
+      if (value < node.value) {
+        node.left = removeNode(node.left, value);
+        return node;
+      } else if (value > node.value) {
+        node.right = removeNode(node.right, value);
+        return node;
+      } else {
+        if (node.left === null) {
+          return node.right;
+        } else if (node.right === null) {
+          return node.left;
         }
-        return null;
-    }
+      }
 
-    remove(value) {
-        const removeNode = (node,value) => {
-            if (node === null) return null;
+      let tempNode = node.right;
+      while (tempNode.left !== null) {
+        tempNode = tempNode.left;
+      }
+      node.value = tempNode.value;
+      node.right = removeNode(node.right, tempNode.value);
+      return node;
+    };
 
-            if (value < node.value) {
-                node.left = removeNode(node.left, value)
-                return node;
-            } else if (value > node.value) {
-                node.right = removeNode(node.right, value);
-                return node;
-            } else {
-                if (node.left === null) {
-                    return node.right;
-                } else if (node.right === null) {
-                    return node.left;
-                }
-            }
+    this.root = removeNode(this.root, value);
+  }
 
-            let tempNode = node.right;
-            while (tempNode.left !== null) {
-                tempNode = tempNode.left;
-            }
-            node.value = tempNode.value;
-            node.right = removeNode(node.right, tempNode.value);
-            return node;
-        }
+  printTree() {
+    const printNode = (node) => {
+      if (node === null) return;
 
-        this.root = removeNode(this.root, value);
-     }
+      printNode(node.left);
+      console.log(node.value);
+      printNode(node.right);
+    };
 
-    printTree() {
-        const printNode = (node) => {
-            if (node === null) return;
-
-            printNode(node.left);
-            console.log(node.value);
-            printNode(node.right);
-        }
-
-        printNode(this.root);
-    }
+    printNode(this.root);
+  }
 }
 
 module.exports = { Node, BinarySearchTree };

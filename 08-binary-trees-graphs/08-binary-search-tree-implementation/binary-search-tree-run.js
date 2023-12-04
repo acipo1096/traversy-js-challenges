@@ -1,4 +1,4 @@
-const { Node, BinarySearchTree } = require('./binary-search-tree');
+const { Node, BinarySearchTree } = require("./binary-search-tree");
 
 // Create a binary search tree:
 //       10
@@ -19,9 +19,9 @@ bst.insert(2);
 // bst.remove(5);
 
 // reveal for testing
-// bst.printTree();
+bst.printTree();
 // When you test, should be, vertically, 2,5,10,15
 
 // Video 2
-console.log(bst.lookup(15));
-console.log(bst.lookup(10));
+// console.log(bst.lookup(15));
+// console.log(bst.lookup(10));

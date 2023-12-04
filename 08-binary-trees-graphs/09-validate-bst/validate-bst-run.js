@@ -1,4 +1,4 @@
-const { Node, isValidBST } = require('./validate-bst');
+const { Node, isValidBST } = require("./validate-bst");
 
 // Create the binary tree:
 //       8
@@ -24,3 +24,4 @@ node4.right = node6;
 
 const result = isValidBST(root);
 // Result should be true
+console.log(result);
